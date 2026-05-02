@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contact Joel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+        .navbar {
+            background-color: #2c3e50;
+            padding: 15px 30px;
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin-right: 20px;
+            font-size: 18px;
+        }
+        .navbar a:hover {
+            color: #f39c12;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #2c3e50;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            border: none;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+        }
+        .btn:hover {
+            background-color: #f39c12;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/contact">Contact</a>
+    </div>
+    <div class="container">
+        <h1>Contact Me 📩</h1>
+        <form method="POST" action="/contact">
+            <input type="text" name="name" placeholder="Your Name" required/>
+            <input type="email" name="email" placeholder="Your Email" required/>
+            <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button class="btn" type="submit">Send Message</button>
+        </form>
+    </div>
+</body>
+</html>
