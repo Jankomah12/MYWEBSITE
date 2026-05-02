@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import os
 
 app = Flask(__name__)
 
@@ -16,17 +17,14 @@ def contact():
         name = request.form["name"]
         email = request.form["email"]
         message = request.form["message"]
-
-        # Save message to file
         with open("messages.txt", "a") as file:
             file.write(f"Name: {name}\n")
             file.write(f"Email: {email}\n")
             file.write(f"Message: {message}\n")
             file.write("---\n")
-
         return render_template("success.html", name=name)
-
     return render_template("contact.html")
 
 if __name__ == "__main__":
-    app.run(debug=False, port=5001)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
