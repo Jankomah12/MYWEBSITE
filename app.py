@@ -4,9 +4,12 @@ import os
 
 app = Flask(__name__)
 
+# Database path
+DB_PATH = os.path.join(os.path.dirname(__file__), "messages.db")
+
 # Create database
 def init_db():
-    conn = sqlite3.connect("messages.db")
+    conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS messages (
@@ -34,8 +37,7 @@ def contact():
         email = request.form["email"]
         message = request.form["message"]
 
-        # Save to database
-        conn = sqlite3.connect("messages.db")
+        conn = sqlite3.connect(DB_PATH)
         cursor = conn.cursor()
         cursor.execute("INSERT INTO messages (name, email, message) VALUES (?, ?, ?)",
                       (name, email, message))
@@ -47,14 +49,19 @@ def contact():
 
 @app.route("/messages")
 def view_messages():
-    conn = sqlite3.connect("messages.db")
-    cursor = conn.cursor()
-    cursor.execute("SELECT * FROM messages")
-    messages = cursor.fetchall()
-    conn.close()
-    return render_template("messages.html", messages=messages)
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT * FROM messages")
+        messages = cursor.fetchall()
+        conn.close()
+        return render_template("messages.html", messages=messages)
+    except Exception as e:
+        return f"Error: {str(e)}"
+
+# Initialize database
+init_db()
 
 if __name__ == "__main__":
-    init_db()
     port = int(os.environ.get("PORT", 8080))
     app.run(host="0.0.0.0", port=port, debug=False)
