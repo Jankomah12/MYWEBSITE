@@ -2,6 +2,7 @@
 <html>
 <head>
     <title>Joel's Website</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -9,65 +10,147 @@
             box-sizing: border-box;
         }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f0f2f5;
         }
         .navbar {
-            background-color: #2c3e50;
+            background: linear-gradient(135deg, #2c3e50, #3498db);
             padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
-        .navbar a {
+        .navbar-brand {
+            color: white;
+            font-size: 22px;
+            font-weight: 700;
+            text-decoration: none;
+        }
+        .navbar-links a {
             color: white;
             text-decoration: none;
-            margin-right: 20px;
-            font-size: 18px;
+            margin-left: 20px;
+            font-size: 16px;
+            transition: color 0.3s;
         }
-        .navbar a:hover {
+        .navbar-links a:hover {
             color: #f39c12;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            background: white;
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        .hero {
+            background: linear-gradient(135deg, #2c3e50, #3498db);
+            color: white;
+            padding: 100px 30px;
+            text-align: center;
         }
-        h1 {
-            color: #2c3e50;
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
             margin-bottom: 20px;
         }
-        p {
-            color: #555;
-            line-height: 1.8;
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .hero-buttons a {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-size: 16px;
+            margin: 5px;
+            transition: transform 0.3s;
+        }
+        .hero-buttons a:hover {
+            transform: translateY(-3px);
+        }
+        .btn-primary {
+            background-color: #f39c12;
+            color: white;
+        }
+        .btn-secondary {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        .features {
+            max-width: 1000px;
+            margin: 60px auto;
+            padding: 0 30px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+        .feature-icon {
+            font-size: 40px;
             margin-bottom: 15px;
         }
-        .btn {
-            display: inline-block;
-            background-color: #2c3e50;
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            margin-top: 10px;
+        .feature-card h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
         }
-        .btn:hover {
-            background-color: #f39c12;
+        .feature-card p {
+            color: #777;
+            font-size: 14px;
+        }
+        .footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
     <div class="navbar">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
-        <a href="/contact">Contact</a>
-        <a href="/messages">Messages</a>
+        <a class="navbar-brand" href="/">Joel's Website 🌐</a>
+        <div class="navbar-links">
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/contact">Contact</a>
+            <a href="/login">Login</a>
+        </div>
     </div>
-    <div class="container">
-        <h1>Welcome to My Website! 🌐</h1>
-        <p>This website was built with Python and Flask!</p>
-        <p>My name is Joel and I am a Python developer from Kumasi, Ghana!</p>
-        <a class="btn" href="/about">Learn More About Me</a>
+    <div class="hero">
+        <h1>Welcome to My Website!</h1>
+        <p>Built with Python and Flask by Joel from Kumasi, Ghana!</p>
+        <div class="hero-buttons">
+            <a class="btn-primary" href="/contact">Contact Me</a>
+            <a class="btn-secondary" href="/about">About Me</a>
+        </div>
+    </div>
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🐍</div>
+            <h3>Python Developer</h3>
+            <p>Building powerful apps with Python and Flask</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <h3>Web Developer</h3>
+            <p>Creating beautiful and functional websites</p>
+        </div>
+        <div class="feature-card">
+            <div class="feature-icon"></div>
+            <h3>Always Learning</h3>
+            <p>Constantly improving and building new things</p>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Built with passion by Joel from Kumasi, Ghana</p>
     </div>
 </body>
 </html>
