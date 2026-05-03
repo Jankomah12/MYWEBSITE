@@ -1,4 +1,4 @@
- from flask import Flask, render_template, request, redirect, url_for, session, flash
+from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 import os
 import hashlib
@@ -12,6 +12,7 @@ DB_PATH = os.path.join(os.path.dirname(__file__), "messages.db")
 def init_db():
     conn = sqlite3.connect(DB_PATH)
     cursor = conn.cursor()
+    cursor.execute("DROP TABLE IF EXISTS messages")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS messages (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -21,7 +22,6 @@ def init_db():
             timestamp TEXT NOT NULL
         )
     """)
-    cursor.execute("DROP TABLE IF EXISTS messages")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -135,4 +135,5 @@ def page_not_found(e):
 init_db()
 
 if __name__ == "__main__":
-    app.run(debug=False, port=7000)
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port, debug=False)
