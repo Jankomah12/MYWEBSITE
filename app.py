@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session, flash
+ from flask import Flask, render_template, request, redirect, url_for, session, flash
 import sqlite3
 import os
 import hashlib
@@ -21,6 +21,7 @@ def init_db():
             timestamp TEXT NOT NULL
         )
     """)
+    cursor.execute("DROP TABLE IF EXISTS messages")
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
